@@ -10,7 +10,7 @@ MVC一直以来是代码组织架构中苹果公司所推崇的开发模式，�
 ![](http://upload-images.jianshu.io/upload_images/6174774-2c6ef04db2418c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-MVVM一个非常重要的环节ViewModel中采用KVO的观察者模式监听，调用ViewController来进行整个架构的解耦设计。在Objective-C当中得益于强大的Runtime机制可以实现对任意类型的观察者监听。虽然Objective-C中可以任意定义KVO，但是经历过大项目的朋友一定首先会想到Objective-C中的KVO在使用的轻便型上差强人意，需要addObserva和removeObserva，且如果Context上下文弄错了，会有一定的崩溃风险，这是需要深刻了解Objective-C的释放避免指针的循环引用等。
+MVVM一个非常重要的环节ViewModel中采用KVO的观察者模式监听，调用ViewController来进行整个架构的解耦设计。在Objective-C当中得益于强大的Runtime机制可以实现对任意类型的观察者监听。虽然Objective-C中可以任意定义KVO，但是经历过大项目的朋友一定首先会想到Objective-C中的KVO在使用的轻便型上差强人意，需要addObserver和removeObserver，且如果Context上下文弄错了，会有一定的崩溃风险，这是需要深刻了解Objective-C的释放避免指针的循环引用等。
 
 Swift作为一个静态编译型语言，它摒弃了Objective-C中的Runtime机制。想要开启动态Property需要再Swift的Property前面增加声明：dynamic，且使用dynamic必须是基于NSObject基类所构造的类型，这样做必然会丧失对Swift原始数据类型的支持，可见其是不好的。
 
@@ -266,12 +266,13 @@ oldValue: b newValue: a
 ~~~
 
 好了，经过打磨的Observable已经初步具备了观察者能力了，并且可以轻巧的应用于变量的观察
-我在编写期间试用了google的一个开发者开发的Observable-Swift的，但这个只针对于Swift 3且功能略复杂。
-
-传送门：
+全部代码：
 https://github.com/slazyk/Observable-Swift
 
-本观察者订阅模式和其他的第三方组件其实都有一个弊端：就是插入式编程，
+
+	我在编写期间试用了google的一个开发者开发的Observable-Swift的，但这个只针对于Swift 3且功能略显复杂。
+
+不过本观察者订阅模式和其他的第三方组件其实都有一个弊端：就是插入式编程，
 插入式编程就是会将原有的代码的变量类型破坏，从而让类型都趋向于Observable<T>数据类型，这样喜欢纯正变量监听的话，当下除了willSet和didSet，尚未发现其他更优雅的方法！
 
 此文抛砖引玉，希望看到的开发者如果有优雅的方法可以在文章后面留言。深表感谢！
