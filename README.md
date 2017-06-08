@@ -1,4 +1,4 @@
-# Observable-Swift
+# Observable-Block-Swift
 A Observable&lt;T> for Swift 3~4
 
 
@@ -270,7 +270,7 @@ oldValue: b newValue: a
 
 好了，经过打磨的Observable已经初步具备了观察者能力了，并且可以轻巧的应用于变量的观察
 全部代码：
-https://github.com/slazyk/Observable-Swift
+https://github.com/maxcong/Observable-Block-Swift
 
 
 	我在编写期间试用了google的一个开发者开发的Observable-Swift的，但这个只针对于Swift 3且功能略显复杂。
